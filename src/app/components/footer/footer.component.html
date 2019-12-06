@@ -1,0 +1,139 @@
+<footer>
+
+  <div class="footer-container">
+    <div class="footer-left">
+      <div class="footer-logo">
+        <img src="assets/mini-logo.jpg" alt="">
+      </div>
+      <div class="footer-copyright">
+        © 2014—2019 <br> iнтернет-магазин
+      </div>
+      <div class="footer-payment">
+        <p style="margin-bottom: 10px;">Можна розраховуватися</p>
+        <a href="https://www.visa.com.ua"><img src="assets/visa.jpg" alt=""></a>
+        <a href="https://www.privat24.ua"><img src="assets/bank.jpg" alt=""></a>
+      </div>
+    </div>
+    <div class="container-full">
+      <div class="footer-catalog">
+        <h5 style="color: #c10807;margin-bottom: 10px;">Каталог</h5>
+        <!-- <ul>
+          <li>
+            <a routerLink="christmas-tree">Штучні ялинки</a>
+          </li>
+          <li>
+            <a routerLink="garlands">Гірлянди</a>
+          </li>
+          <li>
+            <a routerLink="tree-decorations">Ялинкові прикраси</a>
+          </li>
+          <li>
+            <a routerLink="christmas-wreaths">Новорічні вінки</a>
+          </li>
+          <li>
+            <a routerLink="table-decorations">Прикраси для столу</a>
+          </li>
+          <li>
+            <a routerLink="decor-items">Предмети декору</a>
+          </li>
+        </ul> -->
+
+      <ul class="nav nav-pills nav-justified">
+        <a class=" menu__item" *ngFor="let category of categories" [routerLink]="['/user/katalog/',  category.name]"
+        (click)="showCategoryProducts(category.name)"
+        [ngClass]="category.name === categoryName ? 'active' : ''">{{category.name | titlecase}}</a>
+    </ul>
+      </div>
+      <div class="footer-client">
+        <h5 style="color: #c10807;margin-bottom: 10px;">Клієнтам</h5>
+        <ul>
+          <li>
+            <a routerLink="">Вхід в особистий кабінет</a>
+          </li>
+          <li>
+            <a routerLink="katalog">Каталог</a>
+          </li>
+          <li>
+            <a routerLink="pro-nas">Про нас</a>
+          </li>
+          <li>
+            <a routerLink="payment-and-delivery">Оплата і доставка</a>
+          </li>
+          <li>
+            <a routerLink="contact-information">Контактна інформація</a>
+          </li>
+          <li>
+            <a routerLink="blog">Блог</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h5 class="cont-info">Контактна інформація</h5>
+        <div class="tel">
+          <i class="fas fa-phone-square-alt telephone"></i>
+          <div>
+            <p>044 848-22-00</p>
+            <p>095 848-22-00</p>
+          </div>
+        </div>
+        <div class="email">
+          <i style="margin:4px 8px;" class="fas fa-envelope"></i>
+          <div style="font-size: 13px;">
+            <p>Ел.пошта:mail@mail.com</p>
+            <p>Skype:skype</p>
+          </div>
+        </div>
+        <div class="addr">
+          <i style="margin:5px 8px;" class="fas fa-map-marker-alt"></i>
+          <div style="font-size: 13px;">
+            <p>Львів,вул.Франка </p>
+            <p>Карта проїзду</p>
+          </div>
+        </div>
+        <div class="search_me">
+          <p style="font-size: 13px;">Ми в соцмережах</p>
+          <div>
+            <a class="sotsmerezhi" href="https://www.facebook.com/serhiy.marivtsan"><i
+                class="fab fa-facebook-square"></i></a>
+            <a class="sotsmerezhi" href="https://www.linkedin.com/in/serhii-marivtsan-81a030187/"><i
+                class="fab fa-linkedin"></i></a>
+            <a class="sotsmerezhi" href="https://web.telegram.org"><i class="fab fa-telegram"></i></a>
+            <a class="sotsmerezhi" href="https://twitter.com"><i class="fab fa-twitter-square"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <button class="arrowBtn" (click)="btnSmothScroll()">
+    <i style="font-size: 36px;" class="fas fa-arrow-circle-up"></i>
+    <svg width="24" height="24" viewBox="0 0 24 24"></svg>
+  </button>
+
+  <div class="mini-footer">
+    <div class="mini-container">
+      <div class="tel">
+        <p>044 848-22-00</p>
+        <p>095 848-22-00</p>
+        <h5 routerLink="contact-information" class="cont-info">Контактна інформація</h5>
+        <h5 routerLink="pro-nas" class="cont-info">Про нас</h5>
+        <h5 routerLink="payment-and-delivery" class="cont-info">Оплата і доставка</h5>
+      </div>
+      <div class="search_me">
+        <p style="font-size: 13px;">Ми в соцмережах</p>
+        <div>
+          <a class="sotsmerezhi" href="https://www.facebook.com/serhiy.marivtsan"><i
+              class="fab fa-facebook-square"></i></a>
+          <a class="sotsmerezhi" href="https://www.linkedin.com/in/serhii-marivtsan-81a030187/"><i
+              class="fab fa-linkedin"></i></a>
+          <a class="sotsmerezhi" href="https://web.telegram.org"><i class="fab fa-telegram"></i></a>
+          <a class="sotsmerezhi" href="https://twitter.com"><i class="fab fa-twitter-square"></i></a>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        © 2014—2019 iнтернет-магазин
+      </div>
+    </div>
+  </div>
+</footer>

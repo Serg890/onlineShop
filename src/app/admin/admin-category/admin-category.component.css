@@ -1,0 +1,37 @@
+.container{
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    padding: 0;
+
+}
+.header{
+    background-color: rgb(243, 242, 242);
+    display: flex;
+    height: 60px;
+    border-bottom: 1px solid gainsboro;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px;
+}
+
+.addButton{
+    padding: 6px 55px;
+}
+.btn-add{
+  margin: 10px 20px;
+}
+table{
+    width: 95%;
+    margin: 20px;
+}
+hr{
+    margin: 20px;
+}
+.form-control{
+    margin:0 20px;
+    width: 95%;
+    padding: 0 10px;
+}
+th{
+    background-color: gainsboro;
+}

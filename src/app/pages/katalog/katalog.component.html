@@ -1,0 +1,59 @@
+
+<nav class="item-link">
+  <div class="go-home">
+    <a class="link" routerLink="/home">Головна</a>
+    <span><img class="arrow" src="assets/arrow.jpg" alt=""></span>
+  </div>
+  <div class="go-christmas-tree">
+    <span class="span-item">Каталог</span>
+  </div>
+</nav>
+<div class="title">
+  <h1 class="title-tree">Каталог</h1>
+</div>
+<div class="filter">
+  <div>
+    <div style="width: 260px;">
+      <ng5-slider class="slider"  (userChangeEnd)="onSpeedChange($event)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+    </div>
+  </div>
+  <div>
+    <span class="sort">Сортування</span>
+    <div class="btn-group">
+      <button class="btn btn-white btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        виберіть...
+    </button>
+    <div class="dropdown-menu">
+      <button class="filter-btn" type="button" (click)="cheapCl()">спочатку дешеві</button><br>
+      <button class="filter-btn" type="button" (click)="expensiveCl()">спочатку дорогі</button>
+      </div>
+    </div>
+    <div class="btn-group-mini">
+        <button class="btn btn-white btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+      </button>
+      <div class="dropdown-menu">
+        <button class="filter-btn" type="button" (click)="cheapCl()">спочатку дешеві</button><br>
+        <button class="filter-btn" type="button" (click)="expensiveCl()">спочатку дорогі</button>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="main">
+  <ul class="ul-product">
+    <li *ngFor="let prod of arrProduct; let i = index">
+      <div class="catalog-carg">
+        <div class="catalog-image">
+          <img class="image" src="{{prod.img}}" alt="">
+        </div>
+
+        <div class="name-tree">
+          <a [routerLink]="[ '/user/katalog', category, prod.id ]">{{prod.name}}</a>
+        </div>
+        <div class="price-tree">{{prod.price}} грн</div>
+        <button *ngIf="!goBuy" class="btn btn-danger buy" (click)="addBusket(prod,i)">Купити</button>
+        <!-- <button *ngIf="goBuy" class="btn btn-outline-danger" (click)="deleteArticle(i)">В Кошику</button> -->
+      </div>
+    </li>
+  </ul>
+</div>

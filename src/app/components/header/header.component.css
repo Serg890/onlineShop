@@ -1,0 +1,439 @@
+.hamburger-menu {
+  display: none;
+}
+
+.header-container {
+  height: 100px;
+  background-color: #126421;
+  background-repeat: repeat-x;
+  position: relative;
+}
+
+button {
+  outline: none;
+}
+
+.input-search {
+  width: 206px;
+  height: 30px;
+  position: absolute;
+  top: 35px;
+  left: 20px;
+}
+
+a {
+  color: white;
+  outline: none;
+}
+
+a:hover {
+  color: white;
+}
+
+.search {
+  width: 100%;
+  height: 30px;
+  padding: 0 36px 0 12px;
+  background: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+  color: #000;
+}
+
+.fa-search {
+  position: absolute;
+  top: 7px;
+  left: 180px;
+  color: #126421;
+}
+
+.logo-header {
+  display: flex;
+  justify-content: center;
+}
+
+.phone_number {
+  position: absolute;
+  top: 30px;
+  right: 245px;
+  font-size: 19px;
+  color: white;
+}
+
+.desire {
+  position: absolute;
+  top: 22px;
+  right: 200px;
+}
+
+.btn1 {
+  border: none;
+  background-color: #126421;
+  font-size: 29px;
+  color: white;
+}
+
+#aaa {
+  outline: none;
+}
+
+.singIn {
+  position: absolute;
+  top: 22px;
+  right: 140px;
+  text-decoration: none;
+}
+
+.nav-item {
+  color: #495057;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.nav-item:hover {
+  color: #495057;
+}
+
+.basket {
+  position: absolute;
+  top: 22px;
+  right: 80px;
+}
+
+.count {
+  font-size: 18px;
+  color: white;
+  position: absolute;
+  left: 35px;
+  top: -4px;
+  font-weight: bold;
+  /* width: 25px;
+  height: 26px;
+  background-color: #c10807;
+  border-radius: 50%; */
+}
+
+
+.deleteBut {
+  border: none;
+  background-color: white;
+  width: 30px;
+  margin-left: -25px;
+
+}
+
+.btn-minus {
+  border: none;
+  background-color: white;
+  margin-left: 2px;
+  outline: none;
+}
+
+.btn-plus {
+  border: none;
+  background-color: white;
+  outline: none;
+}
+
+.header-main {
+  height: 40px;
+  background-color: #c10807;
+}
+
+.nav-justified {
+  color: white;
+  font-size: 17px;
+  font-family: unset;
+  font-weight: 600;
+  display: flex;
+  height: 40px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.nav-link.active {
+  color: #fff;
+  background-color: #ad0706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.boxRed {
+  height: 50px;
+  background-color: rgba(255, 0, 0, 0.144);
+  color: brown;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: 1px solid rgba(168, 54, 54, 0.247);
+}
+
+.submit {
+  background-color: #ad0706 !important;
+}
+
+.modalBasket {
+  width: 100%;
+  min-height: 360px;
+
+}
+
+.dialogModal {
+  margin: 30px auto;
+  max-width: 790px !important;
+}
+
+.basketBody {
+  width: 729px;
+  height: 111px;
+  margin: 10px auto;
+  border: 1px solid gainsboro;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 7px;
+}
+
+.basketHead {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 14px;
+}
+
+.basketHeadTD {
+  margin-left: 105px;
+  margin-right: 43px;
+  color: #868686;
+}
+
+.fa-plus,
+.fa-minus {
+  color: black;
+}
+
+table,
+.shop-buy {
+  margin: 0 auto;
+}
+
+.shop-buy {
+  width: 729px;
+  height: 111px;
+  border: 1px solid gainsboro;
+  border-radius: 7px;
+  margin-top: 10px;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 24px;
+}
+
+.gen-price {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sp1 {
+  margin-top: 11px;
+  font-size: 14px;
+  color: #868686;
+}
+
+.sp2 {
+  margin: 10px 34px 0 17px;
+  font-weight: 700;
+}
+
+.a {
+  color: black;
+  outline: none;
+}
+
+.a:hover {
+  color: #ad0706;
+}
+
+.example-form {
+  width: 220px;
+  position: absolute;
+  top: 19px;
+  left: 30px;
+  color: white;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-option-img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+[dir='rtl'] .example-option-img {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+
+@media screen and (max-width:1056px) {
+
+  .header-container,
+  .header-main {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+    height: 0;
+  }
+
+  .blog {
+    position: absolute;
+    top: 420px;
+    left: 100px;
+  }
+
+  .contact {
+    position: absolute;
+    top: 465px;
+    left: 78px;
+  }
+
+  .home {
+    position: absolute;
+    top: 505px;
+    left: 68px;
+  }
+
+  .count {
+    color: #126421;
+  }
+
+  .icons {
+    margin-bottom: 20px;
+  }
+
+  i {
+    color: #000;
+  }
+
+  .btn1 {
+    background-color: #ECEFF1;
+  }
+
+  #menu__toggle {
+    opacity: 0;
+  }
+
+  .menu__btn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 101;
+  }
+
+  .menu__btn>span,
+  .menu__btn>span::before,
+  .menu__btn>span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+  }
+
+  .menu__btn>span::before {
+    content: '';
+    top: -8px;
+  }
+
+  .menu__btn>span::after {
+    content: '';
+    top: 8px;
+  }
+
+  .menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    z-index: 100;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    text-align: center;
+    background-color: #ECEFF1;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+  }
+
+  .menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .menu__item:hover {
+    background-color: #CFD8DC;
+  }
+
+  #menu__toggle:checked~.menu__btn>span {
+    transform: rotate(45deg);
+  }
+
+  #menu__toggle:checked~.menu__btn>span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  #menu__toggle:checked~.menu__btn>span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  #menu__toggle:checked~.menu__box {
+    visibility: visible;
+    left: 0;
+  }
+
+  .menu__btn>span,
+  .menu__btn>span::before,
+  .menu__btn>span::after {
+    transition-duration: .25s;
+  }
+
+  .menu__box {
+    transition-duration: .25s;
+  }
+
+  .menu__item {
+    transition-duration: .25s;
+  }
+
+}
+
+@media screen and (max-width:678px) {
+  .basketBody,.shop-buy{
+    width: 610px;
+  }
+  .deleteBut{
+    margin-left: -10px;
+    margin-right: 21px;
+  }
+}

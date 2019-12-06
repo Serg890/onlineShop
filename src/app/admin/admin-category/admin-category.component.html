@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="header">
+      <p class="text">Categoty</p>
+      <button type="button" class="btn btn-secondary addButton" data-toggle="modal" data-target="#AddModal">Add</button>
+    </div>
+    <hr>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th style="width: 40px; " scope="col">#</th>
+          <th scope="col">Name</th>
+          <th style="width: 85px;" scope="col">Edit</th>
+          <th style="width: 100px;" scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of adminCategories let i = index;">
+          <td style="font-weight: bold;">{{i+1}}</td>
+          <td>{{category.name}}</td>
+          <td><button style="padding: 6px 16px;" data-toggle="modal" data-target="#EditModal" type="button"
+              class="btn btn-secondary" (click)="editCategory(category)">edit</button></td>
+          <td><button style="padding: 6px 20px;" data-toggle="modal" data-target="#DeleteModal" type="button"
+              class="btn btn-secondary" (click)="deleteSearchCategory(category.id)">delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal ADD -->
+  <div style="margin-top: 150px" class="modal" id="AddModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+              <input type="text" #name="ngModel" name="name" class="form-control"
+              placeholder="Type someting" [(ngModel)]="formData.name" required>
+                <button type="submit" class="btn btn-secondary btn-add">Add</button>
+            </form>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Edit -->
+
+  <div style="margin-top: 150px" class="modal" id="EditModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input class="form-control" type="text" [(ngModel)]="categoryName" name="categoryName"
+            placeholder="name here...">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModal2>Close</button>
+          <button type="button" class="btn btn-secondary" (click)="saveEditCategory()">Save edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

@@ -1,0 +1,40 @@
+.title{
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+    margin: 20px 30px;
+    text-align: center;
+}
+.container-user{
+    width: 50%;
+    height: 600px;
+    border: 1px solid lightgray;
+    margin: 20px auto;
+    border-radius: 6px;
+}
+h5{
+    margin: 30px 100px;
+}
+form{
+    padding: 30px 100px 25px;
+
+}
+
+.btn-danger{
+    background-color: #c10807;
+}
+.thank-you{
+  width: 70%;
+  height: 400px;
+  background-color:#f8f8f8;
+  border-radius: 10px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+
+

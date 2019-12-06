@@ -1,0 +1,82 @@
+.item-link{
+    margin: 30px 40px 10px;
+    display: flex;
+    font-size: 13px;
+}
+.arrow{
+    width: 14px;
+}
+.link{
+    color: #868686;
+    margin-right: 10px;
+}
+.span-item{
+    color: #868686;
+    margin-left: 10px;
+}
+.link:hover{
+    color: #c10807;
+    text-decoration: none;
+}
+a{
+    color: black;
+}
+a:hover{
+    color: #c10807;
+    text-decoration: none;
+}
+.title{
+    margin-left: 39px;
+    font-family: "Open Sans",sans-serif;
+
+}
+.title-tree{
+    font-weight: 400;
+    font-family: "Open Sans",sans-serif;
+}
+.shipping-method{
+    margin: 50px 40px;
+    font-family: "Open Sans",sans-serif;
+
+}
+.h4-deliverly{
+    margin: 0 0 40px 83px;
+}
+.h4-payment{
+    margin: 0 0 40px 123px;
+
+}
+.methods{
+    display: flex;
+    justify-content: space-evenly;
+}
+.num1{
+    width: 205px;
+    text-align: center;
+}
+.num1-a{
+    font-size: 17px;
+}
+.num1-p{
+font-size: 13px;
+color: #868686;
+}
+
+
+@media screen and (max-width:1056px) {
+  .item-link{
+    display: none;
+  }
+
+  .title-tree {
+    font-size: 30px;
+    margin-top: 70px;
+  }
+}
+
+@media screen and (max-width:678px) {
+ .methods{
+   width: 99%;
+   flex-flow: wrap;
+ }
+}

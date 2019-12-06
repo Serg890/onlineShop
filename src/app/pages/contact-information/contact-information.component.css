@@ -1,0 +1,108 @@
+.item-link{
+    margin: 30px 40px 10px;
+    display: flex;
+    font-size: 13px;
+}
+.arrow{
+    width: 14px;
+}
+.link{
+    color: #868686;
+    margin-right: 10px;
+}
+.span-item{
+    color: #868686;
+    margin-left: 10px;
+}
+.link:hover{
+    color: #c10807;
+    text-decoration: none;
+}
+a{
+    color: black;
+}
+a:hover{
+    color: #c10807;
+    text-decoration: none;
+}
+.title{
+    margin-left: 39px;
+    font-family: "Open Sans",sans-serif;
+
+}
+.title-tree{
+    font-weight: 400;
+    font-family: "Open Sans",sans-serif;
+}
+.container{
+    display: flex;
+}
+
+.wrapper1{
+    margin: 50px 200px;
+}
+.wrapper2{
+    margin: 50px 50px;
+}
+
+i{
+    font-size: 22px;
+    margin: 2px 8px;
+}
+
+.contact{
+    font-size: 15px;
+}
+.tel{
+    display: flex;
+}
+.email,.skype, .viber,.telegram, .whats-app{
+    display: flex;
+    margin-top: 5px;
+}
+.viber-icon{
+    width: 33px;
+    height: 33px;
+    margin-top: -3px;
+}
+.addr{
+    display: flex;
+
+}
+
+@media screen and (max-width:1056px) {
+  .container{
+    display: block;
+  }
+  .wrapper2{
+    margin: 30px 200px;
+  }
+
+  .item-link{
+    display: none;
+  }
+
+  .title {
+    font-size: 30px;
+    margin-top: 70px;
+  }
+}
+@media screen and (max-width:678px) {
+  .title{
+    text-align: center;
+    font-size: 24px;
+  }
+  .wrapper1{
+    margin: 50px 200px 0;
+  }
+  .wrapper2{
+    margin: 0 200px;
+  }
+iframe{
+  display: none;
+}
+.container{
+  margin: 0;
+  display: grid;
+}
+}

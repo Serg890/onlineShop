@@ -1,0 +1,20 @@
+<nav class="item-link">
+    <div class="go-home">
+      <a class="link" routerLink="/home">Головна</a>
+      <span><img class="arrow" src="assets/arrow.jpg" alt=""></span>
+    </div>
+    <div class="go-payment">
+      <span class="span-item">Блог</span>
+    </div>
+  </nav>
+  <div class="title">
+    <h1 class="title-tree">Блог</h1>
+  </div>
+
+  <div class="container-blog">
+      <div class="blog" *ngFor="let blog of arrBlog">
+          <img class="image" width="220px" src="{{blog.img}}" alt="">
+          <div class="date">{{blog.date | date}}</div>
+          <div class="text">{{blog.text}}</div>
+      </div>
+  </div>

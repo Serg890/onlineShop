@@ -1,0 +1,191 @@
+.header-main {
+  height: 40px;
+  background-color: #c10807;
+}
+
+.nav-justified {
+  color: white;
+  font-size: 17px;
+  font-family: unset;
+  font-weight: 600;
+  display: flex;
+  height: 40px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.nav-link.active {
+  color: #fff;
+  background-color: #ad0706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.nav-link {
+  color: white;
+  outline: none;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.item-link {
+  margin: 30px 40px 10px;
+  display: flex;
+  font-size: 13px;
+}
+
+.arrow {
+  width: 14px;
+}
+
+.link {
+  color: #868686;
+  margin-right: 10px;
+}
+
+.span-item {
+  color: #868686;
+  margin-left: 10px;
+}
+
+.link:hover {
+  color: #c10807;
+  text-decoration: none;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: #c10807;
+  text-decoration: none;
+}
+
+.title {
+  margin-left: 39px;
+}
+
+.title-tree {
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+}
+.slider{
+  margin-left: 40px;
+}
+.filter {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 70px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.filter-btn{
+  border: none;
+  background-color: white;
+}
+
+.filter-btn:hover{
+  color: #c10807;
+}
+.btn-group-mini{
+  display: none;
+}
+.sort{
+  color:  #868686;
+  margin: 0 40px;
+}
+.main {
+  margin: 30px;
+}
+
+ul {
+  display: flex;
+  flex-flow: wrap;
+  /* justify-content: flex-start; */
+  justify-content: space-evenly;
+}
+
+li {
+  list-style: none;
+  width: 295px;
+  text-align: center;
+  margin: 0 20px;
+}
+
+li:hover {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  display: block;
+}
+
+.catalog-carg {
+  width: 295px;
+  height: 547px;
+
+}
+
+.catalog-image {
+  height: 420px;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  outline: none;
+}
+
+.price-tree {
+  color: #126421;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.buy {
+  background-color: #c10807 !important;
+  margin-bottom: 20px;
+  border-radius: 7px !important;
+  /* display: none; */
+}
+
+.dropdown-menu {
+  text-align: center;
+  font-size: 14px;
+}
+
+ul {
+  padding: 0;
+  display: flex;
+}
+
+@media screen and (max-width:1056px) {
+
+  li,
+  .catalog-carg {
+    width: 260px;
+  }
+
+  .image {
+    width: 200px;
+  }
+
+  .title-tree {
+    font-size: 30px;
+    margin-top: 70px;
+  }
+
+  .item-link,.btn-group,.sort {
+    display: none;
+  }
+  .btn-group-mini{
+    display: block;
+  }
+}

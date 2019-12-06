@@ -1,0 +1,174 @@
+<div class="container-katalog">
+  <div class="image-block">
+    <div class="img-bl">
+      <img class="image" [src]="product?.img" alt="">
+    </div>
+
+    <mat-tab-group>
+      <mat-tab label="Опис">
+        <ul style="font-size: 14px; margin-top: 15px;">
+          <li>
+            {{product?.description}}
+          </li>
+        </ul>
+      </mat-tab>
+      <mat-tab label="Відгук">
+        <div class="coment">
+          <div class="comentar" *ngFor="let item of arrComent">
+            <div class="sname">
+              <span class="sName"><i style="margin-right:5px;" class="fas fa-user"></i>{{item?.name}}</span>
+              <span class="date">{{item?.date | date:'short'}}</span>
+            </div>
+            <div class="some-text">
+              {{item?.text}}
+            </div>
+          </div>
+
+          <form action="" #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
+            <div style="display: flex;">
+              <div style="margin-right: 50px;">
+                <div class="form-group">
+                  <input type="text" class="form-control inp" [(ngModel)]="name" name="name"
+                    placeholder="Ім'я і прізвище">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control inp" [(ngModel)]="email" name="email" placeholder="Ел.пошта">
+                </div>
+              </div>
+              <div class="span">
+                <span class="spn">Увійти за допомогою</span>
+                <a href="https://m.facebook.com/login/?locale2=ru_RU"><img style="width: 25px;" src="assets/face.png"
+                    alt=""></a>
+                <a
+                  href="https://accounts.google.com/ServiceLogin/identifier?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2F%3Fhl%3Dru&followup=https%3A%2F%2Faccounts.google.com%2F%3Fhl%3Dru&hl=ru&flowName=GlifWebSignIn&flowEntry=AddSession"><img
+                    style="width: 25px;" src="assets/google.png" alt=""></a>
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" cols="10" rows="3" [(ngModel)]="text" name="text"
+                placeholder="Повідомлення"></textarea>
+            </div>
+            <button style="margin-bottom:20px;" type="submit" class="btn btn-danger">Відправити</button>
+          </form>
+
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+  <div class="details">
+    <nav class="item-link">
+      <div class="go-home">
+        <a class="link" routerLink="/home">Головна</a>
+        <span><img class="arrow" src="assets/arrow.jpg" alt=""></span>
+      </div>
+      <div class="go-christmas-tree">
+        <a class="link" style="margin-left: 10px;" routerLink="/user/katalog">Каталог</a>
+        <span><img class="arrow" src="assets/arrow.jpg" alt=""></span>
+      </div>
+      <div class="go-christmas-tree">
+        <span class="span-item"> {{product?.name}}</span>
+      </div>
+    </nav>
+    <div class="title">
+      <h4 class="title-tree">{{product?.name}}</h4>
+    </div>
+    <div class="price">
+      <h3 class="price-h3">{{product?.price}} грн</h3>
+    </div>
+    <div class="buy-product">
+      <div class="number">
+        <button class="btn-minus" type="button" (click)="minusCl(product)"><i class="fas fa-minus"></i></button>
+        <span style="margin: 0 10px;">{{product?.counter}}</span>
+        <button class="btn-plus" type="button" (click)="plusCl(product)"><i class="fas fa-plus"></i></button>
+      </div>
+      <button type="button" class="btn btn-danger" (click)="addBusket(product)">Купити</button>
+      <button type="button" class="btn btn-outline-secondary quick-order" data-toggle="modal"
+        data-target="#buyExpress">Швидкий заказ</button>
+    </div>
+    <div class="parametrs">
+      <h5 style="margin-left: 30px;">Характеристики</h5>
+      <hr style="margin-left: 31px;">
+      <div class="country">
+        <span style="color:#868686;">Країна виробництва</span>
+        <span>Україна</span>
+      </div>
+    </div>
+    <mat-tab-group>
+      <mat-tab label="Доставка">
+        <div class="deliverly">
+          <ul>
+            <li>
+              Новою поштою по Україні - 30 грн.
+            </li>
+            <li>
+              Кур'єром до дверей по Львові - 40 грн.
+            </li>
+          </ul>
+        </div>
+      </mat-tab>
+      <mat-tab label="Оплата">
+        <div class="payment">
+          <ul>
+            <li>
+              Готівкою при отриманні.
+            </li>
+            <li>
+              Кредитною карткою в privat24, LiqPay.
+            </li>
+            <li>
+              Через касу або термінал самообслуговування Приватбанк.
+            </li>
+          </ul>
+        </div>
+      </mat-tab>
+      <mat-tab label="Гарантія">
+        <div class="guarantee">
+          <ul>
+            <li>
+              Гарантія від виробника 12 місяців
+            </li>
+          </ul>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+
+  </div>
+
+  <!-- Modal -->
+
+  <div class="modal fade" id="buyExpress" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Швидке замовлення</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label>ПІБ</label>
+              <input style="margin-left: 65px;" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Ел.пошта</label>
+              <input style="margin-left: 23px;" type="email" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Телефон</label>
+              <input style="margin-left: 26px;" type="number" class="form-control">
+            </div>
+          </form>
+          <!-- <p class="boxRed" *ngIf="check">Some input is empty</p> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModal1>Скасувати</button>
+          <button type="button" class="btn btn-danger submit">Оформити</button>
+        </div>
+      </div>
+    </div>
+  </div>

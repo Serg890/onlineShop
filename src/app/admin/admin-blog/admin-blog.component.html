@@ -1,0 +1,61 @@
+<form action="" #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
+  <div class="form-group text1">
+    <textarea *ngIf="!checkText" class="form-control" type="text" [(ngModel)]="text" name="text"
+      placeholder="text here..."></textarea>
+  </div>
+  <!-- <div class="form-group">
+    <textarea *ngIf="checkText" class="form-control" type="text" [(ngModel)]="editBlogText" name="editBlogText"
+      placeholder="text here..."></textarea>
+  </div> -->
+
+
+
+
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" (change)="upload($event)" accept=".png,.jpg" />
+    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+    <br><br>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+        [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0"
+        aria-valuemax="100">
+      </div>
+    </div>
+    <br>
+    <div class="close" *ngIf="!close">
+      <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-dark" role="alert">
+        <span>File uploaded: Now you can add product.</span>
+      </div>
+    </div>
+  </div>
+  <button style="margin-top: 20px;" type="submit" *ngIf="!check" class="btn btn-secondary">Add</button>
+  <button style="margin-top: 20px;" type="button" *ngIf="check" class="btn btn-secondary" (click)="saveBlog()">Save
+    edit</button>
+</form>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">date</th>
+      <th scope="col">text</th>
+      <th scope="col">image</th>
+      <th scope="col">edit</th>
+      <th scope="col">delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let arr of arrAdminBlog; let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{arr.date | date}}</td>
+      <td>{{arr.text}}</td>
+      <td><img width="70px" src="{{arr.img}}" alt=""> </td>
+      <td>
+        <button type="button" class="btn btn-secondary" (click)="editBlog(arr)">edit</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-secondary" (click)="deleteBlog(arr.id)">delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

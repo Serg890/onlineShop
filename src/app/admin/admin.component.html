@@ -1,0 +1,25 @@
+<div class="user">
+  <img style="width: 150px;" src="assets/user.png" alt="">
+  <h4 routerLink="/home">Вийти</h4>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- <a class="navbar-brand" routerLink="/home">На головну</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="admin-category" routerLinkActive="active">Категорії</a>
+      <a class="nav-link" routerLink="admin-product" routerLinkActive="active">Продукти</a>
+      <a class="nav-link" routerLink="admin-blog" routerLinkActive="active">Блог</a>
+      <a class="nav-link" routerLink="admin-order" routerLinkActive="active">Замовлення</a>
+    </div>
+  </div>
+
+</nav>
+<div style="margin-top: 30px;" class="col-12">
+  <div class="tab-content">
+      <router-outlet></router-outlet>
+
+  </div>
+</div>

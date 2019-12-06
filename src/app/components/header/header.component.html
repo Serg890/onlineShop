@@ -1,0 +1,230 @@
+<header>
+  <div class="hamburger-menu">
+    <input id="menu__toggle" type="checkbox" />
+    <label class="menu__btn" for="menu__toggle">
+      <span></span>
+    </label>
+    <ul class="menu__box">
+      <div class="icons">
+        <div class="desire">
+          <button id="aaa" class="btn1" type="button"><i class="fas fa-heart"></i><span class="count">0</span></button>
+        </div>
+        <div class="singIn">
+          <button class="btn1" data-toggle="modal" data-target="#SingInModal" type="button"><i
+              class="fas fa-user-circle"></i></button>
+        </div>
+        <div class="basket">
+          <button class="btn1" data-toggle="modal" data-target="#modalBasket" type="button"><i
+              class="fas fa-shopping-bag"></i><span class="count">{{lenghts}}</span></button>
+        </div>
+      </div>
+
+      <ul class="nav nav-pills nav-justified">
+          <a class=" menu__item" *ngFor="let category of categories" [routerLink]="['/user/katalog/',  category.name]"
+          (click)="showCategoryProducts(category.name)"
+          [ngClass]="category.name === categoryName ? 'active' : ''">{{category.name | titlecase}}</a>
+      </ul>
+      <li><a class="menu__item blog" routerLink="blog">Блог</a></li>
+      <li><a class="menu__item contact" routerLink="contact-information">Контакти</a></li>
+      <li><a class="menu__item home" routerLink="/home">На головну</a></li>
+    </ul>
+
+  </div>
+
+
+  <div class="header-container">
+
+    <div class="input-search">
+      <input class="form-control search" type="text" [(ngModel)]="search" name="search" placeholder="пошук товарів">
+      <i class="fas fa-search"></i>
+    </div>
+
+
+    <div class="logo-header">
+      <a routerLink="/home"> <img src="assets/logo.jpg" alt=""></a>
+
+    </div>
+    <div class="phone_number">
+      <i style="margin-right: 8px;" class="fas fa-phone-square-alt"></i>
+      <span>044 848-22-00</span>
+    </div>
+    <div class="desire">
+      <button id="aaa" class="btn1" type="button"><i class="far fa-heart"></i><span class="count">0</span></button>
+    </div>
+    <div class="singIn">
+      <button class="btn1" data-toggle="modal" data-target="#SingInModal" type="button"><i
+          class="far fa-user-circle"></i></button>
+    </div>
+    <div class="basket">
+      <button class="btn1" data-toggle="modal" data-target="#modalBasket" type="button"><i
+          class="fas fa-shopping-bag"></i><span class="count">{{lenghts}}</span>
+        </button>
+    </div>
+  </div>
+  <div class="header-main">
+    <ul class="nav nav-pills nav-justified">
+        <a class="nav-link" *ngFor="let category of categories" [routerLink]="['/user/katalog/',  category.name]"
+        (click)="showCategoryProducts(category.name)"
+        [ngClass]="category.name === categoryName ? 'active' : ''">{{category.name | titlecase}}</a>
+    </ul>
+  </div>
+</header>
+
+<!-- Modal Sing in-->
+<div class="modal fade" id="SingInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <nav style="margin-top: 35px;">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+            aria-controls="nav-home" aria-selected="true">Увійти</a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Реєстрація</a>
+
+        </div>
+      </nav>
+      <div class="modal-body">
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+
+              <div class="row" *ngIf="authError">
+                <div class="col-12 alert alert-danger">{{ authError?.message }}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <label for="email">Email</label>
+                  <input ngModel #email="ngModel" name="email" type="email" class="form-control">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <label for="password">Password</label>
+                  <input ngModel #password="ngModel" name="password" type="password" class="form-control">
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-12">
+                  <a href="/register">Click here to register</a>
+                </div>
+
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit">Login</button>
+                </div>
+              </div>
+
+            </form>
+            <p class="boxRed" *ngIf="check">Some input is empty</p>
+            <p class="boxRed" *ngIf="check1">Wrong password or email</p>
+          </div>
+          <div class="col-12">
+            <div class="row" *ngIf="authError">
+              <div class="col-12 alert alert-danger">
+                {{ authError?.message }}
+              </div>
+            </div>
+            <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
+              <div class="row">
+                <div class="col-md-6 mb-2">
+                  <label for="firstName">First name</label>
+                  <input ngModel #firstname="ngModel" name="firstName" type="text" class="form-control" id="firstName">
+                </div>
+                <div class="col-md-6 mb-2">
+                  <label for="lastName">Last name</label>
+                  <input ngModel #lastname="ngModel" name="lastName" type="text" class="form-control" id="lastName" value="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mb-2">
+                  <label for="email">Email</label>
+                  <input ngModel #email="ngModel" name="email" type="email" class="form-control">
+                </div>
+              </div>
+              <div>
+                <div class="row">
+                  <div class="col-md-12 mb-2">
+                    <label for="password">Password</label>
+                    <input ngModel #password="ngModel" name="password" type="password" class="form-control">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-2">
+                    <label>Confirm Password</label>
+                    <input name="password" type="password" class="form-control">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModal1>Close</button>
+        <button type="button" class="btn btn-danger submit" (click)="submit()">Ввійти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal basket -->
+
+<div class="modal fade" id="modalBasket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog dialogModal" role="document">
+    <div class="modal-content modalBasket">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Кошик</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table>
+          <thead>
+            <tr class="basketHead">
+              <td></td>
+              <td></td>
+              <td style="color: #868686;">Кількість</td>
+              <td class="basketHeadTD">Вартість</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="basketBody" *ngFor="let prod of basketArticle; let i = index">
+              <button class="deleteBut" type="button"><img class="deleteBut" src="assets/1111.png" alt=""
+                  (click)="deleteArticle(i)"></button>
+              <td style="margin-left: -75px;"><img width="60px" src="{{prod?.img}}" alt=""></td>
+              <td>{{prod?.name}}</td>
+              <th> <button class="btn-minus" type="button" (click)="minusCl(prod)"><i class="fas fa-minus"></i></button>
+                <span style="margin: 0 10px;">{{prod?.counter}}</span>
+                <button class="btn-plus" type="button" (click)="plusCl(prod)"><i class="fas fa-plus"></i></button></th>
+              <th>{{prod?.price}} грн</th>
+            </tr>
+          </tbody>
+        </table>
+        <div class="shop-buy">
+          <div class="gen-price">
+            <span class="sp1">Pазом</span>
+            <span class="sp2">{{count}} грн</span>
+          </div>
+          <div class="cart-footer">
+            <div class="go-back">
+              <a class="a" href="#" data-dismiss="modal" aria-label="Close" #closeModal2><span
+                  aria-hidden="true"></span><i class="fas fa-arrow-left"></i> Повернутись назад</a>
+            </div>
+            <button style="background: #ad0706;" routerLink="buy-now" class="btn btn-danger" [disabled]="buttonOrder" (click)="order()">Оформити заказ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

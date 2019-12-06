@@ -1,0 +1,55 @@
+.item-link{
+    margin: 30px 40px 10px;
+    display: flex;
+    font-size: 13px;
+}
+.arrow{
+    width: 14px;
+}
+.link{
+    color: #868686;
+    margin-right: 10px;
+}
+.span-item{
+    color: #868686;
+    margin-left: 10px;
+}
+.link:hover{
+    color: #c10807;
+    text-decoration: none;
+}
+a{
+    color: black;
+}
+a:hover{
+    color: #c10807;
+    text-decoration: none;
+}
+.title{
+    margin-left: 39px;
+    font-family: "Open Sans",sans-serif;
+
+}
+.title-tree{
+    font-weight: 400;
+    font-family: "Open Sans",sans-serif;
+}
+.text{
+width: 55%;
+margin: 10px auto;
+font-family: "Open Sans",sans-serif;
+}
+.text-dreams{
+    text-align: center;
+    margin-top: 70px;
+}
+@media screen and (max-width:1056px) {
+  .item-link{
+    display: none;
+  }
+
+  .title-tree {
+    font-size: 30px;
+    margin-top: 70px;
+  }
+}

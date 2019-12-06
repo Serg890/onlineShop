@@ -1,0 +1,35 @@
+<!-- <h2 class="title">Оформлення заказу</h2> -->
+
+<div *ngIf="!check"  class="container-user">
+    <h2 class="title">Оформлення заказу</h2>
+    <h5>Одержувач замовлення</h5>
+  <form action="" #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
+    <div class="form-group" >
+      <label>ПІБ</label>
+      <input type="text" class="form-control" [(ngModel)]="infoPerson" name="infoPerson">
+
+    </div>
+    <div class="form-group">
+      <label>Телефон</label>
+      <input [textMask]="{mask: mask}" type="text" class="form-control"  [(ngModel)]="phone" name="phone" >
+    </div>
+    <div class="form-group">
+      <label>Місто</label>
+      <input type="text" class="form-control" placeholder="введіть назву свого міста"  [(ngModel)]="city" name="city">
+      <!-- <input ngx-google-places-autocomplete [options]='options'  class="form-control"  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/> -->
+    </div>
+    <div class="form-group">
+      <label>Ел.пошта</label>
+      <input type="email" class="form-control"  [(ngModel)]="email" name="email">
+    </div>
+    <input type="hidden" name="order" #author="ngModel" [(ngModel)]="order" required>
+    <button type="submit" class="btn btn-danger">Оформити заказ</button>
+  </form>
+</div>
+
+
+<div *ngIf="check" class="thank-you">
+  <h1 class="text">Заказ оформлено!</h1>
+  <h3 class="text2">Дякуємо за покупку</h3>
+  <img style="width: 200px;" src="assets/galka.png" alt="">
+</div>

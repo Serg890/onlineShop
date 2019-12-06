@@ -1,0 +1,31 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th style="width: 40px; " scope="col">#</th>
+      <th scope="col">ПІБ</th>
+      <th scope="col">Телефон</th>
+      <th scope="col">Місто</th>
+      <th scope="col">Ел.пошта</th>
+      <th scope="col">Товар</th>
+      <th scope="col">Видалити</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let info of arrInfoPerson; let i = index">
+      <td style="font-weight: bold;" scope="row">{{i+1}}</td>
+      <td>{{info.infoPerson}}</td>
+      <td>{{info.phone}}</td>
+      <td>{{info.city}}</td>
+      <td>{{info.email}}</td>
+      <td >
+        <div class="info-product" *ngFor="let prod of info.order ; let i = index" >
+          <img width="70px" src="{{prod.img}}">
+          <span>{{prod.name}}</span>
+          <b>Кількість: {{prod.counter}}</b>
+          <span>{{prod.price}} грн</span>
+        </div>
+      </td>
+      <td><button data-toggle="modal" data-target="#DeleteModal" type="button" class="btn btn-secondary"
+          (click)="deleteSearchCategory(info.id)">delete</button></td>
+    </tr>
+  </tbody>

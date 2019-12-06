@@ -1,0 +1,8 @@
+span, b{
+  text-align: center;
+}
+.info-product{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
