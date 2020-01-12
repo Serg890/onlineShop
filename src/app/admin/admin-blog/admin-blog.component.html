@@ -3,10 +3,10 @@
     <textarea *ngIf="!checkText" class="form-control" type="text" [(ngModel)]="text" name="text"
       placeholder="text here..."></textarea>
   </div>
-  <!-- <div class="form-group">
+  <div class="form-group">
     <textarea *ngIf="checkText" class="form-control" type="text" [(ngModel)]="editBlogText" name="editBlogText"
       placeholder="text here..."></textarea>
-  </div> -->
+  </div>
 
 
 
@@ -54,7 +54,7 @@
         <button type="button" class="btn btn-secondary" (click)="editBlog(arr)">edit</button>
       </td>
       <td>
-        <button type="button" class="btn btn-secondary" (click)="deleteBlog(arr.id)">delete</button>
+        <button type="button" class="btn btn-secondary" (click)="deleteBlog(arr ,arr.id)">delete</button>
       </td>
     </tr>
   </tbody>

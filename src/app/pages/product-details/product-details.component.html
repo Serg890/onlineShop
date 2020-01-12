@@ -1,7 +1,7 @@
 <div class="container-katalog">
   <div class="image-block">
     <div class="img-bl">
-      <img class="image" [src]="product?.img" alt="">
+      <img class="image" src="{{product?.img}}" alt="">
     </div>
 
     <mat-tab-group>
@@ -63,10 +63,6 @@
         <span><img class="arrow" src="assets/arrow.jpg" alt=""></span>
       </div>
       <div class="go-christmas-tree">
-        <a class="link" style="margin-left: 10px;" routerLink="/user/katalog">Каталог</a>
-        <span><img class="arrow" src="assets/arrow.jpg" alt=""></span>
-      </div>
-      <div class="go-christmas-tree">
         <span class="span-item"> {{product?.name}}</span>
       </div>
     </nav>
@@ -83,8 +79,7 @@
         <button class="btn-plus" type="button" (click)="plusCl(product)"><i class="fas fa-plus"></i></button>
       </div>
       <button type="button" class="btn btn-danger" (click)="addBusket(product)">Купити</button>
-      <button type="button" class="btn btn-outline-secondary quick-order" data-toggle="modal"
-        data-target="#buyExpress">Швидкий заказ</button>
+
     </div>
     <div class="parametrs">
       <h5 style="margin-left: 30px;">Характеристики</h5>

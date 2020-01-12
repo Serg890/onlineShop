@@ -40,6 +40,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { BlogDetailsComponent } from './pages/blog-details/blog-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { Ng5SliderModule } from 'ng5-slider';
     ProductDetailsComponent,
     BuyNowComponent,
     AdminOrdersComponent,
+    BlogDetailsComponent,
   ],
   imports: [
     BrowserModule,

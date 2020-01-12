@@ -41,18 +41,18 @@
 </div>
 <div class="main">
   <ul class="ul-product">
-    <li *ngFor="let prod of arrProduct; let i = index">
+    <li *ngFor="let prod of copyArrProduct; let i = index">
       <div class="catalog-carg">
         <div class="catalog-image">
           <img class="image" src="{{prod.img}}" alt="">
         </div>
 
         <div class="name-tree">
-          <a [routerLink]="[ '/user/katalog', category, prod.id ]">{{prod.name}}</a>
+          <a [routerLink]="[ '/user/katalog', prod.categoryName, prod.id ]">{{prod.name}}</a>
         </div>
         <div class="price-tree">{{prod.price}} грн</div>
-        <button *ngIf="!goBuy" class="btn btn-danger buy" (click)="addBusket(prod,i)">Купити</button>
-        <!-- <button *ngIf="goBuy" class="btn btn-outline-danger" (click)="deleteArticle(i)">В Кошику</button> -->
+        <button  class="btn btn-danger buy" (click)="addBusket(prod)">Купити</button>
+        <!-- <button *ngIf="prod.isBought" class="btn btn-outline-danger" (click)="deleteArticle(i)">В Кошику</button> -->
       </div>
     </li>
   </ul>

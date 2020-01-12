@@ -1,7 +1,9 @@
+import { IProducts } from './../../shared/interfaces/admin-product.interface';
+import { IOrder } from './../../shared/interfaces/info-order.interface';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
-import { IOrder } from 'src/app/shared/interfaces/info-order.interface';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-admin-orders',
@@ -10,10 +12,13 @@ import { IOrder } from 'src/app/shared/interfaces/info-order.interface';
 })
 export class AdminOrdersComponent implements OnInit {
   arrInfoPerson: IOrder[] = [];
-
+  count: number;
+  obj: any;
   constructor(private productService: ProductService,
-              private firestore: AngularFirestore) {
+              private firestore: AngularFirestore,
+              private prStorage: AngularFireStorage) {
     this.getOrders();
+
   }
 
   ngOnInit() {
@@ -30,12 +35,13 @@ export class AdminOrdersComponent implements OnInit {
 
         });
         console.log(this.arrInfoPerson);
+        // this.count = this.arrInfoPerson.reduce((sum, item) => sum + item.order.counter * item.order.price, 0);
       }
     );
 
   }
 
-  public deleteSearchCategory(id: string): void {
+  public deleteSearchCategory( order: IProducts , id: string): void {
     if (confirm('Are you sure to delete this record')) {
       this.firestore.doc('orders/' + id).delete();
     }

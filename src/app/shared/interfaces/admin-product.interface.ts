@@ -6,5 +6,6 @@ export interface IProducts {
     price: number;
     img: string;
     imgID: string;
+    isBought: boolean;
     counter?: number;
 }

@@ -15,6 +15,8 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { BuyNowComponent } from './pages/buy-now/buy-now.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { BlogDetailsComponent } from './pages/blog-details/blog-details.component';
+
 
 
 
@@ -28,6 +30,7 @@ const routes: Routes = [
     {path: 'payment-and-delivery', component: PaymentAndDeliveryComponent},
     {path: 'contact-information', component: ContactInformationComponent},
     {path: 'blog', component: BlogComponent},
+    {path: 'blog/:id', component: BlogDetailsComponent},
     {path: 'buy-now', component: BuyNowComponent},
   ]},
   { path: 'admin', component: AdminComponent, children: [

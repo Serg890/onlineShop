@@ -1,0 +1,54 @@
+.item-link {
+  margin: 30px 40px 10px;
+  display: flex;
+  font-size: 13px;
+}
+.go-blog{
+  margin-left: 10px;
+}
+.arrow {
+  width: 14px;
+}
+
+.link {
+  color: #868686;
+  margin-right: 10px;
+}
+
+.span-item {
+  color: #868686;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.link:hover {
+  color: #c10807;
+  text-decoration: none;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: #c10807;
+  text-decoration: none;
+}
+
+.container-blog{
+  display: flex;
+  justify-content: space-evenly;
+}
+.img-bl{
+  margin: 20px 40px;
+}
+.image{
+  width: 400px;
+  border-radius: 10px;
+}
+
+.information{
+  margin-top: 20px;
+  margin-right: 40px;
+  text-align: justify;
+}

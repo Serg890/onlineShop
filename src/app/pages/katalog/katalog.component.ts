@@ -2,9 +2,8 @@ import { ICategory } from './../../shared/interfaces/admin-category.interface';
 import { CategoryService } from './../../shared/services/category.service';
 import { Component, OnInit } from '@angular/core';
 import { IProducts } from 'src/app/shared/interfaces/admin-product.interface';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, Event } from '@angular/router';
 import { ProductService } from 'src/app/shared/services/product.service';
-import { Subject } from 'rxjs';
 import { Options, LabelType } from 'ng5-slider';
 
 @Component({
@@ -14,7 +13,7 @@ import { Options, LabelType } from 'ng5-slider';
 })
 export class KatalogComponent implements OnInit {
   minValue = 200;
-  maxValue = 1700;
+  maxValue = 1900;
   options: Options = {
     floor: 0,
     ceil: 2000,
@@ -33,28 +32,26 @@ export class KatalogComponent implements OnInit {
 
   categories: ICategory[];
   arrProduct: IProducts[];
+  copyArrProduct: any[];
   prod: IProducts[] = [];
   categoryName: string;
-  goBuy: boolean;
-  private subject = new Subject<any>();
+  // goBuy: boolean;
   constructor(private productService: ProductService,
               private categoryService: CategoryService,
               private route: ActivatedRoute,
               private router: Router
-) {
-this.getCategory();
-this.getProducts();
-this.router.events.subscribe((event: Event) => {
-if (event instanceof NavigationEnd) {
-this.getProducts();
-}
-});
+  ) {
+    this.getCategory();
+    this.getProducts();
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.getProducts();
+      }
+    });
 
-}
+  }
 
   ngOnInit() {
-
-    console.log(this.options);
     if (localStorage.getItem('article')) {
       const basket = JSON.parse(localStorage.getItem('article'));
       this.prod.push(...basket);
@@ -70,14 +67,12 @@ this.getProducts();
             ...cat.payload.doc.data()
           } as ICategory;
         });
-        console.log(this.categories);
       }
     );
   }
-public onSpeedChange(event): void {
-  this.arrProduct = this.arrProduct.filter(item => item.price >= event.value && item.price <= event.highValue);
-
-}
+  public onSpeedChange(event): void {
+    this.copyArrProduct = this.arrProduct.filter(item => item.price >= event.value && item.price <= event.highValue);
+  }
   private getProducts(): void {
     this.categoryName = this.route.snapshot.paramMap.get('category');
     this.showCategoryProducts(this.categoryName);
@@ -85,7 +80,6 @@ public onSpeedChange(event): void {
 
   public showCategoryProducts(name) {
     this.categoryName = name;
-    console.log(this.categoryName);
     this.productService.getProducts().subscribe(
       arrayProd => {
         this.arrProduct = arrayProd.map(prod => {
@@ -95,31 +89,31 @@ public onSpeedChange(event): void {
           } as IProducts;
         });
         this.arrProduct = this.arrProduct.filter(product => product.categoryName === this.categoryName);
-        console.log(this.arrProduct);
+        this.copyArrProduct = this.arrProduct.slice();
       }
     );
   }
 
 
   public cheapCl(): void {
-    this.arrProduct.sort((a, b) => {
+    this.copyArrProduct.sort((a, b) => {
       return a.price - b.price;
     });
   }
   public expensiveCl(): void {
-    this.arrProduct.sort((a, b) => {
+    this.copyArrProduct.sort((a, b) => {
       return b.price - a.price;
     });
   }
 
 
-  public addBusket(product: IProducts, index: number): void {
+  public addBusket(product: IProducts): void {
     const foundItem = this.prod.find(item => item.id === product.id);
     if (foundItem) {
+      const findIndex = this.prod.findIndex(item => item.id === product.id);
       foundItem.counter++;
-      this.prod.splice(index, 1, foundItem);
+      this.prod.splice(findIndex, 1, foundItem);
     } else {
-      product.counter = 1;
       this.prod.push(product);
     }
     const toJson = JSON.stringify(this.prod);
@@ -127,5 +121,8 @@ public onSpeedChange(event): void {
     // this.goBuy = true;
   }
 
-
+  // public deleteArticle(product: IProducts, index: number): void {
+  //  const data = JSON.parse(localStorage.getItem('article'));
+  //  data.find(prod => prod.id === product.id).isBought = false;
+  // }
 }

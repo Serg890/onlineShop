@@ -10,7 +10,7 @@
           <button id="aaa" class="btn1" type="button"><i class="fas fa-heart"></i><span class="count">0</span></button>
         </div>
         <div class="singIn">
-          <button class="btn1" data-toggle="modal" data-target="#SingInModal" type="button"><i
+          <button class="btn1" *ngIf="!user" data-toggle="modal" data-target="#SingInModal" type="button"><i
               class="fas fa-user-circle"></i></button>
         </div>
         <div class="basket">
@@ -20,13 +20,20 @@
       </div>
 
       <ul class="nav nav-pills nav-justified">
-          <a class=" menu__item" *ngFor="let category of categories" [routerLink]="['/user/katalog/',  category.name]"
+        <a class=" menu__item" *ngFor="let category of categories" [routerLink]="['/user/katalog/',  category.name]"
           (click)="showCategoryProducts(category.name)"
           [ngClass]="category.name === categoryName ? 'active' : ''">{{category.name | titlecase}}</a>
       </ul>
       <li><a class="menu__item blog" routerLink="blog">Блог</a></li>
       <li><a class="menu__item contact" routerLink="contact-information">Контакти</a></li>
       <li><a class="menu__item home" routerLink="/home">На головну</a></li>
+      <div class="user-active">
+        <button type="button" *ngIf="user" class="btn btn-outline-success logout" (click)="logout()"><i
+            class="fas fa-sign-out-alt"></i></button>
+        <button type="button" *ngIf="user" class="btn btn-outline-warning user" disabled>{{user.displayName}}</button>
+        <button type="button" *ngIf="adminka" class="btn btn-outline-warning admin" routerLink="/admin"><i
+            class="fas fa-user-shield"></i></button>
+      </div>
     </ul>
 
   </div>
@@ -34,11 +41,11 @@
 
   <div class="header-container">
 
-    <div class="input-search">
-      <input class="form-control search" type="text" [(ngModel)]="search" name="search" placeholder="пошук товарів">
-      <i class="fas fa-search"></i>
-    </div>
-
+    <button type="button" *ngIf="user" class="btn btn-outline-danger logout" (click)="logout()"><i
+        class="fas fa-sign-out-alt"></i></button>
+    <button type="button" *ngIf="user" class="btn btn-outline-warning user" disabled>{{user.displayName}}</button>
+    <button type="button" *ngIf="adminka" class="btn btn-outline-warning admin" (click)="routingToAdminPage()"><i
+        class="fas fa-user-shield"></i></button>
 
     <div class="logo-header">
       <a routerLink="/home"> <img src="assets/logo.jpg" alt=""></a>
@@ -52,18 +59,18 @@
       <button id="aaa" class="btn1" type="button"><i class="far fa-heart"></i><span class="count">0</span></button>
     </div>
     <div class="singIn">
-      <button class="btn1" data-toggle="modal" data-target="#SingInModal" type="button"><i
+      <button class="btn1" *ngIf="!user" data-toggle="modal" data-target="#SingInModal" type="button"><i
           class="far fa-user-circle"></i></button>
     </div>
     <div class="basket">
       <button class="btn1" data-toggle="modal" data-target="#modalBasket" type="button"><i
           class="fas fa-shopping-bag"></i><span class="count">{{lenghts}}</span>
-        </button>
+      </button>
     </div>
   </div>
   <div class="header-main">
     <ul class="nav nav-pills nav-justified">
-        <a class="nav-link" *ngFor="let category of categories" [routerLink]="['/user/katalog/',  category.name]"
+      <a class="nav-link" *ngFor="let category of categories" [routerLink]="['/user/katalog/',  category.name]"
         (click)="showCategoryProducts(category.name)"
         [ngClass]="category.name === categoryName ? 'active' : ''">{{category.name | titlecase}}</a>
     </ul>
@@ -79,20 +86,20 @@
       <nav style="margin-top: 35px;">
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-            aria-controls="nav-home" aria-selected="true">Увійти</a>
+            aria-controls="nav-home" aria-selected="true" (click)="loginClick()">Увійти</a>
           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-            aria-controls="nav-profile" aria-selected="false">Реєстрація</a>
+            aria-controls="nav-profile" aria-selected="false" (click)="registratorClick()">Реєстрація</a>
 
         </div>
       </nav>
       <div class="modal-body">
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <form #loginForm="ngForm" *ngIf="!OpenForm" (ngSubmit)="login(loginForm)">
 
-              <div class="row" *ngIf="authError">
+              <!-- <div class="row" *ngIf="authError">
                 <div class="col-12 alert alert-danger">{{ authError?.message }}</div>
-              </div>
+              </div> -->
 
               <div class="row">
                 <div class="col-12">
@@ -109,18 +116,18 @@
               </div>
 
               <div class="row mt-2">
-                <div class="col-12">
+                <!-- <div class="col-12">
                   <a href="/register">Click here to register</a>
-                </div>
+                </div> -->
 
                 <div class="col-12">
-                  <button class="btn btn-primary" type="submit">Login</button>
+                  <button style="margin-right: 10px;" type="button" class="btn btn-secondary" data-dismiss="modal"
+                    #closeModal1>Close</button>
+                  <button class="btn btn-danger submit" type="submit">Login</button>
                 </div>
               </div>
 
             </form>
-            <p class="boxRed" *ngIf="check">Some input is empty</p>
-            <p class="boxRed" *ngIf="check1">Wrong password or email</p>
           </div>
           <div class="col-12">
             <div class="row" *ngIf="authError">
@@ -128,7 +135,7 @@
                 {{ authError?.message }}
               </div>
             </div>
-            <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
+            <form #userRegForm="ngForm" *ngIf="OpenForm" (ngSubmit)="createUser(userRegForm)">
               <div class="row">
                 <div class="col-md-6 mb-2">
                   <label for="firstName">First name</label>
@@ -136,7 +143,8 @@
                 </div>
                 <div class="col-md-6 mb-2">
                   <label for="lastName">Last name</label>
-                  <input ngModel #lastname="ngModel" name="lastName" type="text" class="form-control" id="lastName" value="">
+                  <input ngModel #lastname="ngModel" name="lastName" type="text" class="form-control" id="lastName"
+                    value="">
                 </div>
               </div>
               <div class="row">
@@ -160,17 +168,15 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button style="margin-right: 10px;" type="button" class="btn btn-secondary" data-dismiss="modal"
+                      #closeModal1>Close</button>
+                    <button class="btn btn-danger submit" type="submit">Submit</button>
                   </div>
                 </div>
               </div>
             </form>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModal1>Close</button>
-        <button type="button" class="btn btn-danger submit" (click)="submit()">Ввійти</button>
       </div>
     </div>
   </div>
@@ -221,7 +227,8 @@
               <a class="a" href="#" data-dismiss="modal" aria-label="Close" #closeModal2><span
                   aria-hidden="true"></span><i class="fas fa-arrow-left"></i> Повернутись назад</a>
             </div>
-            <button style="background: #ad0706;" routerLink="buy-now" class="btn btn-danger" [disabled]="buttonOrder" (click)="order()">Оформити заказ</button>
+            <button style="background: #ad0706;" routerLink="buy-now" class="btn btn-danger" [disabled]="buttonOrder"
+              (click)="order()">Оформити заказ</button>
           </div>
         </div>
       </div>

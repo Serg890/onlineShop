@@ -9,6 +9,7 @@ export class Products implements IProducts {
         public price: number,
         public img: string,
         public imgID: string,
-        public counter?: number
+        public isBought: boolean,
+        public counter?: number,
     ) { }
 }

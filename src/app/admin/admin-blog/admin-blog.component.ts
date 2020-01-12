@@ -15,7 +15,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AdminBlogComponent implements OnInit {
   arrAdminBlog: Array<IBlog> = [];
-  blogID: number;
+  blogID: string;
   blogText: string;
   blogDate: string;
   checkText: boolean;
@@ -70,14 +70,7 @@ export class AdminBlogComponent implements OnInit {
     // this.resetForm();
     // this.closeModal1.nativeElement.click();
   }
-  // private getBlog(): void {
-  //   this.blogService.getBlogs().subscribe(
-  //     (data: IBlog[]) => {
-  //       this.arrAdminBlog = data;
-  //       console.log(this.arrAdminBlog);
-  //     }
-  //   );
-  // }
+
 
   public upload(event): void {
     const id = Math.random().toString(36).substring(2);
@@ -95,53 +88,33 @@ export class AdminBlogComponent implements OnInit {
   }
 
 
-  // public addBlog(): void {
-  //   const newBlog: IBlog = new Blog(1, this.blogDate, this.blogText, this.blogImage, this.imgID);
-  //   if (this.arrAdminBlog.length > 0) {
-  //     newBlog.id = this.arrAdminBlog.slice(-1)[0].id + 1;
-  //   }
-  //   this.blogService.addBlogs(newBlog).subscribe(
-  //     () => {
-  //       this.getBlog();
-  //     }
-  //   );
-  //   this.blogText = '';
-  //   this.close = true;
-  // }
 
-  // public deleteBlog(blog): void {
-  //   this.blogService.deleteBlogs(blog.id).subscribe(
-  //     () => {
-  //       const filePath = `/${blog.imgID}`;
-  //       const storageRef = this.prStorage.ref('images/');
-  //       storageRef.child(filePath).delete();
 
-  //       this.getBlog();
-  //     }
-  //   );
-  // }
 
-  public deleteBlog(id: string): void {
+  public deleteBlog(blog: IBlog,id: string): void {
     if (confirm('Are you sure to delete this record')) {
       this.firestore.doc('blog/' + id).delete();
+      const filePath = `/${blog.imgID}`;
+      const storageRef = this.prStorage.ref('images/');
+      storageRef.child(filePath).delete();
     }
   }
 
   public editBlog(blog): void {
     this.blogID = blog.id;
     this.editBlogText = blog.text;
+    this.imgID = blog.id;
     this.check = true;
     this.checkText = true;
   }
 
-  // public saveBlog(): void {
-  //   const newBlog: IBlog = new Blog(this.blogID, this.blogDate, this.editBlogText, this.blogImage, this.imgID);
-  //   this.blogService.updateblogs(newBlog.id, newBlog).subscribe(
-  //     () => {
-  //       this.getBlog();
-  //     }
-  //   );
-  //   this.editBlogText = '';
-  // }
+  public saveBlog(): void {
+    this.firestore.collection('blog').doc(this.blogID).update({
+      id: this.blogID,
+      text: this.editBlogText,
+      imgID: this.imgID
+    });
+    this.editBlogText = '';
+  }
 
 }

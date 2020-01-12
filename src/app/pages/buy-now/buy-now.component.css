@@ -36,5 +36,12 @@ form{
   margin-top: 30px;
 }
 
-
+.boxRed {
+  height: 50px;
+  background-color: rgba(255, 0, 0, 0.144);
+  color: brown;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: 1px solid rgba(168, 54, 54, 0.247);
+}
 

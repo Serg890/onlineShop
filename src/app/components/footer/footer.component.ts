@@ -39,7 +39,6 @@ export class FooterComponent implements OnInit {
             ...cat.payload.doc.data()
           } as ICategory;
         });
-        console.log(this.categories);
       }
     );
 

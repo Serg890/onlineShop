@@ -17,26 +17,6 @@
     <div class="container-full">
       <div class="footer-catalog">
         <h5 style="color: #c10807;margin-bottom: 10px;">Каталог</h5>
-        <!-- <ul>
-          <li>
-            <a routerLink="christmas-tree">Штучні ялинки</a>
-          </li>
-          <li>
-            <a routerLink="garlands">Гірлянди</a>
-          </li>
-          <li>
-            <a routerLink="tree-decorations">Ялинкові прикраси</a>
-          </li>
-          <li>
-            <a routerLink="christmas-wreaths">Новорічні вінки</a>
-          </li>
-          <li>
-            <a routerLink="table-decorations">Прикраси для столу</a>
-          </li>
-          <li>
-            <a routerLink="decor-items">Предмети декору</a>
-          </li>
-        </ul> -->
 
       <ul class="nav nav-pills nav-justified">
         <a class=" menu__item" *ngFor="let category of categories" [routerLink]="['/user/katalog/',  category.name]"
@@ -49,9 +29,6 @@
         <ul>
           <li>
             <a routerLink="">Вхід в особистий кабінет</a>
-          </li>
-          <li>
-            <a routerLink="katalog">Каталог</a>
           </li>
           <li>
             <a routerLink="pro-nas">Про нас</a>

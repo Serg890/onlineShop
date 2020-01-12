@@ -18,14 +18,15 @@
       <td>{{info.city}}</td>
       <td>{{info.email}}</td>
       <td >
-        <div class="info-product" *ngFor="let prod of info.order ; let i = index" >
+        <div class="info-product" *ngFor="let prod of info.order; let i = index" >
           <img width="70px" src="{{prod.img}}">
           <span>{{prod.name}}</span>
           <b>Кількість: {{prod.counter}}</b>
           <span>{{prod.price}} грн</span>
         </div>
+         <b>Сума: {{count}}</b>
       </td>
       <td><button data-toggle="modal" data-target="#DeleteModal" type="button" class="btn btn-secondary"
-          (click)="deleteSearchCategory(info.id)">delete</button></td>
+          (click)="deleteSearchCategory(info.order ,info.id)">delete</button></td>
     </tr>
   </tbody>

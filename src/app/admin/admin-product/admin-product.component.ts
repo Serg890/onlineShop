@@ -1,3 +1,4 @@
+import { IProducts } from './../../shared/interfaces/admin-product.interface';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
@@ -6,8 +7,6 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 import { ICategory } from 'src/app/shared/interfaces/admin-category.interface';
-import { IProducts } from 'src/app/shared/interfaces/admin-product.interface';
-import { Products } from 'src/app/shared/classes/admin-product.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
@@ -31,7 +30,7 @@ export class AdminProductComponent implements OnInit {
   adminProducts: IProducts[];
   search: string;
 
-  productsID: number;
+  productsID: string;
 
   editNameProd: string;
   editDescProd: string;
@@ -82,7 +81,7 @@ export class AdminProductComponent implements OnInit {
 
 
   public onSubmit(form: NgForm) {
-    const data = Object.assign({}, form.value);
+    const data = Object.assign({counter: 1 }, form.value);
     data.img = this.productImage;
     data.imgID = this.imgID;
     delete data.id;
@@ -112,9 +111,12 @@ export class AdminProductComponent implements OnInit {
   //   };
   // }
 
-  public deleteSearchCategory(id: string): void {
+  public deleteSearchCategory(prod: IProducts, id: string): void {
     if (confirm('Are you sure to delete this record')) {
       this.firestore.doc('products/' + id).delete();
+      const filePath = `/${prod.imgID}`;
+      const storageRef = this.prStorage.ref('images/');
+      storageRef.child(filePath).delete();
     }
   }
 
@@ -141,22 +143,19 @@ export class AdminProductComponent implements OnInit {
     this.editNameCatProd = products.categoryid;
     this.editImgProd = products.img;
   }
-  // editSave(): void {
-  //   // tslint:disable-next-line: max-line-length
-  // tslint:disable-next-line: max-line-length
-  //   const newC: IProducts = new Products(this.productsID, this.editNameCatProd, this.editNameProd, this.editDescProd, this.editPriceProd, this.editImgProd, this.imgID);
+  editSave(): void {
+    this.firestore.collection('products').doc(this.productsID).update({
+      id: this.productsID,
+      name: this.editNameProd,
+      description: this.editDescProd,
+      price: this.editPriceProd
+    });
+    this.closeModal2.nativeElement.click();
+    this.editNameProd = '';
+    this.editDescProd = '';
+    this.editPriceProd = null;
 
-  //   this.productService.updateProducts(newC.id, newC).subscribe(
-  //     () => {
-  //       this.getAdminProd();
-  //     }
-  //   );
-  //   this.editNameProd = '';
-  //   this.editDescProd = '';
-  //   this.editPriceProd = null;
-  //   this.closeModal2.nativeElement.click();
-
-  // }
+  }
 
 
 

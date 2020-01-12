@@ -2,11 +2,31 @@
   display: none;
 }
 
+
+
 .header-container {
   height: 100px;
   background-color: #126421;
   background-repeat: repeat-x;
   position: relative;
+}
+
+.logout {
+  position: absolute;
+  top: 35px;
+  left: 25px;
+}
+
+.user {
+  position: absolute;
+  top: 35px;
+  left: 75px;
+}
+
+.admin {
+  position: absolute;
+  top: 35px;
+  left: 155px;
 }
 
 button {
@@ -118,7 +138,7 @@ a:hover {
   border: none;
   background-color: white;
   width: 30px;
-  margin-left: -25px;
+  margin-left: -15px;
 
 }
 
@@ -292,6 +312,15 @@ table,
     height: 0;
   }
 
+  .user-active {
+    position: absolute;
+    top: 530px;
+    left: 60px;
+  }
+  .user {
+    left: 75px;
+  }
+
   .blog {
     position: absolute;
     top: 420px;
@@ -429,10 +458,13 @@ table,
 }
 
 @media screen and (max-width:678px) {
-  .basketBody,.shop-buy{
+
+  .basketBody,
+  .shop-buy {
     width: 610px;
   }
-  .deleteBut{
+
+  .deleteBut {
     margin-left: -10px;
     margin-right: 21px;
   }

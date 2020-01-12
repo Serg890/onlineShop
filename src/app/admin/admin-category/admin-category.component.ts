@@ -15,7 +15,7 @@ export class AdminCategoryComponent implements OnInit {
   @ViewChild('closeModal2', { static: false }) closeModal2: ElementRef;
   @ViewChild('closeModal3', { static: false }) closeModal3: ElementRef;
   adminCategories: Array<ICategory>;
-  categoryId: number;
+  categoryId: string;
   categoryName: string;
   editStatus: boolean;
   search: string;
@@ -51,19 +51,6 @@ export class AdminCategoryComponent implements OnInit {
   }
 
 
-
-  // private getAdminCat(): void {
-  //   this.categoryService.getCategory().subscribe(data => {
-  //     this.adminCategories = data;
-  //   },
-  //     err => {
-  //       console.log(err);
-
-  //     }
-  //   );
-  // }
-
-
   public onSubmit(form: NgForm) {
     const data = Object.assign({}, form.value);
     delete data.id;
@@ -71,10 +58,9 @@ export class AdminCategoryComponent implements OnInit {
       if (form.value.id == null) {
         this.firestore.collection('category').add(data);
       } else {
-        this.firestore.doc('category/' + form.value.id).update(data);
+        this.firestore.doc('category/' + this.categoryId).update(data);
       }
 
-      // this.getCategoris();
     }
     this.closeModal1.nativeElement.click();
 
@@ -95,23 +81,23 @@ export class AdminCategoryComponent implements OnInit {
       this.firestore.doc('category/' + id).delete();
     }
   }
-  // public editCategory(category): void {
-  //   this.categoryId = category.id;
-  //   this.categoryName = category.name;
-  // }
+  public editCategory(category): void {
+    this.categoryId = category.id;
+    this.categoryName = category.name;
+  }
 
-  // public saveEditCategory(): void {
-  //   const editC: ICategory = new Category(this.categoryId, this.categoryName);
-  //   this.categoryService.updateCategories(editC.id, editC).then(() => {
-  //     this.getAdminCat();
-  //   });
-  //   this.clearForm();
-  //   this.closeModal2.nativeElement.click();
-  // }
+  public saveEditCategory(): void {
+    this.firestore.collection('category').doc(this.categoryId).update({
+      id: this.categoryId,
+      name: this.categoryName,
+    });
+    this.clearForm();
+    this.closeModal2.nativeElement.click();
+  }
 
 
   public clearForm(): void {
-    this.categoryId = null;
+    this.categoryId = '';
     this.categoryName = '';
     this.editStatus = false;
   }

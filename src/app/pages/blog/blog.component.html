@@ -15,6 +15,6 @@
       <div class="blog" *ngFor="let blog of arrBlog">
           <img class="image" width="220px" src="{{blog.img}}" alt="">
           <div class="date">{{blog.date | date}}</div>
-          <div class="text">{{blog.text}}</div>
+          <div class="text" [routerLink]="['/user/blog/', blog.id]">{{blog.text}}</div>
       </div>
   </div>

@@ -31,7 +31,6 @@ export class ProductDetailsComponent implements OnInit {
     private productDetService: ProductDetailsService,
     private route: ActivatedRoute,
     private firestore: AngularFirestore,
-    // private ProductService: ProductService,
   ) {
     this.getDetProduct();
     this.getComent();
@@ -46,7 +45,6 @@ export class ProductDetailsComponent implements OnInit {
 
   private getDetProduct(): any {
     this.productID = this.route.snapshot.paramMap.get('id');
-    console.log(this.productID);
     this.productDetService.getDetailsProduct(this.productID).subscribe(
       doc => {
         this.product = doc.data();
@@ -94,30 +92,44 @@ export class ProductDetailsComponent implements OnInit {
   //   };
   // }
 
-
-  public minusCl(item: IProducts): void {
-    if (item.counter > 1 ) {
+  public minusCl(item: IProducts, index: number): void {
+    if (item.counter > 1) {
       item.counter--;
-      // this.count -= item.price;
+      this.count -= item.price;
     }
   }
-  public plusCl(item: IProducts): void {
-    if (item.counter >= 1 ) {
-      item.counter++;
-    }
-    // tslint:disable-next-line: no-shadowed-variable
-    // this.count = this.basketArticle.reduce((sum, item) => sum + item.counter * item.price, 0);
+  public plusCl(item: IProducts, index: number): void {
+    item.counter++;
+    debugger
   }
 
-  public addBusket(product: IProducts, index: number): void {
-    const foundItem = this.prod.find(item => item.id === product.id);
-    if (foundItem) {
-      foundItem.counter++;
-      this.prod.splice(index, 1, foundItem);
-    } else {
-      product.counter = 1;
-      this.prod.push(product);
+  // public minusCl(product: IProducts): void {
+  //   product.counter = 1;
+  //   if (product.counter > 1) {
+  //     product.counter--;
+  //     console.log(product.counter);
+
+  //     // this.count -= item.price;
+  //   }
+  // }
+  // public plusCl(product: IProducts): void {
+  //   if (product.counter >= 1) {
+  //     product.counter++;
+  //   }
+  //   // tslint:disable-next-line: no-shadowed-variable
+  //   // this.count = this.basketArticle.reduce((sum, item) => sum + item.counter * item.price, 0);
+  // }
+
+  public addBusket(product: IProducts): void {
+
+    if(JSON.parse(localStorage.getItem('article')).length){
+      const findIndex = this.prod.findIndex(item => item.id === product.id);
+      this.prod.splice(findIndex, 1, product);
     }
+    else{
+this.prod.push(product)
+    }
+
     const toJson = JSON.stringify(this.prod);
     localStorage.setItem('article', toJson);
   }
