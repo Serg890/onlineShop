@@ -1,60 +1,64 @@
 <div class="container-katalog">
+  <div class="title-mini">
+    <h4 class="title-tree-mini">{{product?.name}}</h4>
+  </div>
   <div class="image-block">
     <div class="img-bl">
       <img class="image" src="{{product?.img}}" alt="">
     </div>
+    <div class="description">
+      <mat-tab-group>
+        <mat-tab label="Опис">
+          <ul style="font-size: 14px; margin-top: 15px;">
+            <li>
+              {{product?.description}}
+            </li>
+          </ul>
+        </mat-tab>
+        <mat-tab label="Відгук">
+          <div class="coment">
+            <div class="comentar" *ngFor="let item of arrComent">
+              <div class="sname">
+                <span class="sName"><i style="margin-right:5px;" class="fas fa-user"></i>{{item?.name}}</span>
+                <span class="date">{{item?.date | date:'short'}}</span>
+              </div>
+              <div class="some-text">
+                {{item?.text}}
+              </div>
+            </div>
 
-    <mat-tab-group>
-      <mat-tab label="Опис">
-        <ul style="font-size: 14px; margin-top: 15px;">
-          <li>
-            {{product?.description}}
-          </li>
-        </ul>
-      </mat-tab>
-      <mat-tab label="Відгук">
-        <div class="coment">
-          <div class="comentar" *ngFor="let item of arrComent">
-            <div class="sname">
-              <span class="sName"><i style="margin-right:5px;" class="fas fa-user"></i>{{item?.name}}</span>
-              <span class="date">{{item?.date | date:'short'}}</span>
-            </div>
-            <div class="some-text">
-              {{item?.text}}
-            </div>
+            <form action="" #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
+              <div style="display: flex;">
+                <div style="margin-right: 50px;">
+                  <div class="form-group">
+                    <input type="text" class="form-control inp" [(ngModel)]="name" name="name"
+                      placeholder="Ім'я і прізвище">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control inp" [(ngModel)]="email" name="email"
+                      placeholder="Ел.пошта">
+                  </div>
+                </div>
+                <div class="span">
+                  <span class="spn">Увійти за допомогою</span>
+                  <a href="https://m.facebook.com/login/?locale2=ru_RU"><img style="width: 25px;" src="assets/face.png"
+                      alt=""></a>
+                  <a
+                    href="https://accounts.google.com/ServiceLogin/identifier?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2F%3Fhl%3Dru&followup=https%3A%2F%2Faccounts.google.com%2F%3Fhl%3Dru&hl=ru&flowName=GlifWebSignIn&flowEntry=AddSession"><img
+                      style="width: 25px;" src="assets/google.png" alt=""></a>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" cols="10" rows="3" [(ngModel)]="text" name="text"
+                  placeholder="Повідомлення"></textarea>
+              </div>
+              <button style="margin-bottom:20px;" type="submit" class="btn btn-danger">Відправити</button>
+            </form>
+
           </div>
-
-          <form action="" #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
-            <div style="display: flex;">
-              <div style="margin-right: 50px;">
-                <div class="form-group">
-                  <input type="text" class="form-control inp" [(ngModel)]="name" name="name"
-                    placeholder="Ім'я і прізвище">
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control inp" [(ngModel)]="email" name="email" placeholder="Ел.пошта">
-                </div>
-              </div>
-              <div class="span">
-                <span class="spn">Увійти за допомогою</span>
-                <a href="https://m.facebook.com/login/?locale2=ru_RU"><img style="width: 25px;" src="assets/face.png"
-                    alt=""></a>
-                <a
-                  href="https://accounts.google.com/ServiceLogin/identifier?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2F%3Fhl%3Dru&followup=https%3A%2F%2Faccounts.google.com%2F%3Fhl%3Dru&hl=ru&flowName=GlifWebSignIn&flowEntry=AddSession"><img
-                    style="width: 25px;" src="assets/google.png" alt=""></a>
-              </div>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" cols="10" rows="3" [(ngModel)]="text" name="text"
-                placeholder="Повідомлення"></textarea>
-            </div>
-            <button style="margin-bottom:20px;" type="submit" class="btn btn-danger">Відправити</button>
-          </form>
-
-        </div>
-      </mat-tab>
-    </mat-tab-group>
-
+        </mat-tab>
+      </mat-tab-group>
+    </div>
   </div>
   <div class="details">
     <nav class="item-link">
@@ -82,8 +86,8 @@
 
     </div>
     <div class="parametrs">
-      <h5 style="margin-left: 30px;">Характеристики</h5>
-      <hr style="margin-left: 31px;">
+      <h5 class="pr1">Характеристики</h5>
+      <hr class="pr1">
       <div class="country">
         <span style="color:#868686;">Країна виробництва</span>
         <span>Україна</span>
