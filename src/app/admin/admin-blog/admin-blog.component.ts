@@ -21,7 +21,7 @@ export class AdminBlogComponent implements OnInit {
   checkText: boolean;
   check: boolean;
   close: boolean;
-
+  text: string;
   editBlogText: string;
 
   ref: AngularFireStorageReference;

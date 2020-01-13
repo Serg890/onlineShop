@@ -51,7 +51,8 @@ li {
   width: 80%;
   padding: 30px;
 }
-.nav-justified{
+
+.nav-justified {
   display: flex;
   flex-direction: column;
   line-height: 25px;
@@ -96,6 +97,7 @@ li {
 .sotsmerezhi {
   font-size: 26px;
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .arrowBtn {
@@ -157,12 +159,12 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 30px;
+    font-size: 20px;
     margin-top: 25px;
   }
 
   .cont-info {
-    font-size: 25px;
+    font-size: 20px;
     color: #4c4c4c;
     margin-top: 10px;
     cursor: pointer;
@@ -174,8 +176,12 @@ li {
   }
 
   .search_me {
-    margin: 0;
+    margin: 0 auto;
     margin-top: 10px;
+  }
+
+  .sotsmerezhi {
+    cursor: pointer;
   }
 
   .footer-copyright {

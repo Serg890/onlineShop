@@ -14,6 +14,9 @@ export class BuyNowComponent implements OnInit {
   check: boolean;
   order: IOrder[] = [];
   email: string;
+  infoPerson: string;
+  phone: number;
+  city: string;
   public mask = ['+', '3', '8', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   constructor( private firestore: AngularFirestore) {
                  this.getBasketProduct();
@@ -49,13 +52,6 @@ export class BuyNowComponent implements OnInit {
         this.firestore.doc('orders/' + form.value.id).update(data);
       }
     }
-    // const regEmail = /^[a-zA-Z\d\.]+@[a-z]{1,6}\.[a-z]{1,3}(\.[a-z]{1,3})?$/;
-    // if (regEmail.test(this.email)) {
-    //   this.check = false;
-    // } else {
-    //   this.check = true;
-
-    // }
   }
 
 

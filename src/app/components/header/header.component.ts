@@ -119,7 +119,7 @@ export class HeaderComponent implements OnInit {
     this.closeModal2.nativeElement.click();
   }
 
-  public minusCl(item: IProducts, index: number): void {
+  public minusCl(item: IProducts): void {
     if (item.counter > 1) {
       item.counter--;
       this.count -= item.price;
@@ -127,7 +127,7 @@ export class HeaderComponent implements OnInit {
       localStorage.setItem('article', toJson);
     }
   }
-  public plusCl(item: IProducts, index: number): void {
+  public plusCl(item: IProducts): void {
     item.counter++;
     // tslint:disable-next-line: no-shadowed-variable
     this.count = this.basketArticle.reduce((sum, item) => sum + item.counter * item.price, 0);

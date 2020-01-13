@@ -18,6 +18,13 @@ export class AdminProductComponent implements OnInit {
   @ViewChild('closeModal1', { static: false }) closeModal1: ElementRef;
   @ViewChild('closeModal2', { static: false }) closeModal2: ElementRef;
 
+  categoryName: string;
+  name: string;
+  description: string;
+  price: number;
+  check: boolean;
+  
+
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
   uploadState: Observable<string>;

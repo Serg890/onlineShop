@@ -20,9 +20,10 @@ export class ProductDetailsComponent implements OnInit {
   productID: string;
   count: number;
   dateCom: number;
-  // nameCom: string;
-  // emailCom: string;
-  // textCom: string;
+  name: string;
+  email: string;
+  text: string;
+
   prod: IProducts[] = [];
   formData: { id: any; categoryName: string; name: string; description: string; price: any; };
   basketArticle: any;
@@ -92,15 +93,14 @@ export class ProductDetailsComponent implements OnInit {
   //   };
   // }
 
-  public minusCl(item: IProducts, index: number): void {
+  public minusCl(item: IProducts): void {
     if (item.counter > 1) {
       item.counter--;
       this.count -= item.price;
     }
   }
-  public plusCl(item: IProducts, index: number): void {
+  public plusCl(item: IProducts): void {
     item.counter++;
-    debugger
   }
 
   // public minusCl(product: IProducts): void {

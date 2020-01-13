@@ -75,9 +75,11 @@ a:hover {
   font-weight: 400;
   font-family: "Open Sans", sans-serif;
 }
-.slider{
+
+.slider {
   margin-left: 40px;
 }
+
 .filter {
   margin-top: 20px;
   display: flex;
@@ -86,21 +88,24 @@ a:hover {
   font-family: "Open Sans", sans-serif;
 }
 
-.filter-btn{
+.filter-btn {
   border: none;
   background-color: white;
 }
 
-.filter-btn:hover{
+.filter-btn:hover {
   color: #c10807;
 }
-.btn-group-mini{
+
+.btn-group-mini {
   display: none;
 }
-.sort{
-  color:  #868686;
+
+.sort {
+  color: #868686;
   margin: 0 40px;
 }
+
 .main {
   margin: 30px;
 }
@@ -182,10 +187,16 @@ ul {
     margin-top: 70px;
   }
 
-  .item-link,.btn-group,.sort {
+  .item-link,
+  .btn-group,
+  .sort {
     display: none;
   }
-  .btn-group-mini{
+
+  .btn-group-mini {
     display: block;
+    position: absolute;
+    top: 175px;
+    right: 119px;
   }
 }
